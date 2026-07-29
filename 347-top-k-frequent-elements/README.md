@@ -7,7 +7,7 @@
 <p><strong>Input:</strong> <span class="example-io">nums = [1,1,1,2,2,3], k = 2</span></p>
 
 <p><strong>Output:</strong> <span class="example-io">[1,2]</span></p>
-</div>
+</div> H
 
 <p><strong class="example">Example 2:</strong></p>
 
