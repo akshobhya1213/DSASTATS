@@ -1,41 +1,52 @@
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
-        List<Integer>[] bracket = new List[nums.length+1];
-        Map<Integer,Integer> ak = new HashMap<>();
-       // int result =0;
+      
+      HashMap<Integer,Integer> map = new HashMap<>();
+
+      List<Integer>[] bucket = new List[nums.length+1];
+
+     for( int num : nums ){
+
+        map.put(num,map.getOrDefault(num,0)+1);
+     }
 
 
-        for(int num : nums){
-            ak.put(num,ak.getOrDefault(num,0)+1);
+     for(int key : map.keySet()){
+
+        int freq = map.get(key);
+
+
+        if(bucket[freq] == null){
+            bucket[freq] = new ArrayList<>();
+
         }
 
-        for(int key : ak.keySet()){
-            int freq = ak.get(key);
-            if(bracket[freq]== null){
-               bracket[freq] = new ArrayList<>();
-            }
+        bucket[freq].add(key);
+     }
 
-            bracket[freq].add(key);
-        }
 
-        int[] result = new int[k];
-        int numb = 0;
 
-        for(int i = bracket.length-1; i>=0 && numb<k ; i--){
+     int result[] = new int[k];
 
-            if(bracket[i] == null){
-                continue;
-            }
-            for(int num : bracket[i]){
-                result[numb++] = num;
-            
-              if(numb == k){
-                break;
-              }
+     int hello = 0;
 
+     for(int i = bucket.length-1; i >=1; i--){
+
+        if(bucket[i] != null ){
+            for(int yu : bucket[i]){
+                result[hello++] = yu;
+
+
+
+                if(hello == k){
+                    return result;
+                }
             }
         }
 
-        return result;
+     }
+
+     return result;
+
     }
 }
